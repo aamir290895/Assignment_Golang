@@ -1,5 +1,7 @@
 package models
 
+import "sync"
+
 type Employee struct {
 	ID       int     `json:"id"`
 	Name     string  `json:"name"`
@@ -7,4 +9,7 @@ type Employee struct {
 	Salary   float64 `json:"salary"`
 }
 
-var Employees = make(map[int]Employee)
+var (
+	Employees = make(map[int]Employee)
+	Mutex     = &sync.Mutex{}
+)
