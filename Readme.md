@@ -125,7 +125,9 @@ Response :
 ]
 
 
+Concurrency Safety
 
+The application ensures concurrency safety by using a mutex lock (sync.Mutex) around read and write operations on the in-memory employee store.
 
 
 
