@@ -8,6 +8,8 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// used mutex for manage concurrency.
+
 func CreateEmployee(c *gin.Context) {
 	var e models.Employee
 	if err := c.ShouldBindJSON(&e); err != nil {
