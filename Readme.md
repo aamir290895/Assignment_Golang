@@ -29,6 +29,10 @@ cd Assignment_Golang
 
 go mod tidy
 
+go get github.com/stretchr/testify/assert
+
+go get github.com/gin-gonic/gin
+
 
 3. Run the application
 
