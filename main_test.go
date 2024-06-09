@@ -1,6 +1,7 @@
-package handlers
+package main
 
 import (
+	"Assignment_Golang/handlers"
 	"Assignment_Golang/models"
 	"bytes"
 	"encoding/json"
@@ -14,15 +15,17 @@ import (
 
 func setupRouter() *gin.Engine {
 	router := gin.Default()
-	router.POST("/employee", CreateEmployee)
-	router.GET("/employee/:id", GetEmployeeByID)
-	router.PUT("/employee/:id", UpdateEmployee)
-	router.DELETE("/employee/:id", DeleteEmployee)
-	router.GET("/employees", GetAllEmployees)
+	router.POST("/employee", handlers.CreateEmployee)
+	router.GET("/employee/:id", handlers.GetEmployeeByID)
+	router.PUT("/employee/:id", handlers.UpdateEmployee)
+	router.DELETE("/employee/:id", handlers.DeleteEmployee)
+	router.GET("/employees", handlers.GetAllEmployees)
 	return router
 }
 
 func TestCreateEmployee(t *testing.T) {
+	t.Log("Starting Test")
+
 	router := setupRouter()
 
 	employee := models.Employee{
@@ -45,9 +48,16 @@ func TestCreateEmployee(t *testing.T) {
 	assert.Equal(t, employee.Name, createdEmployee.Name)
 	assert.Equal(t, employee.Position, createdEmployee.Position)
 	assert.Equal(t, employee.Salary, createdEmployee.Salary)
+
+	t.Log(createdEmployee)
+	t.Log("Finished Test")
+
 }
 
 func TestGetEmployeeByID(t *testing.T) {
+
+	t.Log("Starting Test")
+
 	router := setupRouter()
 
 	// Add an employee to the store for testing
@@ -74,12 +84,20 @@ func TestGetEmployeeByID(t *testing.T) {
 	assert.Equal(t, employee.Name, retrievedEmployee.Name)
 	assert.Equal(t, employee.Position, retrievedEmployee.Position)
 	assert.Equal(t, employee.Salary, retrievedEmployee.Salary)
+
+	t.Log(retrievedEmployee)
+	t.Log("Finished Test")
+
 }
 
 func TestUpdateEmployee(t *testing.T) {
+
+	t.Log("Starting Test")
+
 	router := setupRouter()
 
-	// Add an employee to the store for testing
+	// Add an employee to the store for
+
 	models.Mutex.Lock()
 	employee := models.Employee{
 		ID:       1,
@@ -110,9 +128,16 @@ func TestUpdateEmployee(t *testing.T) {
 	assert.Equal(t, updatedEmployee.Name, responseEmployee.Name)
 	assert.Equal(t, updatedEmployee.Position, responseEmployee.Position)
 	assert.Equal(t, updatedEmployee.Salary, responseEmployee.Salary)
+
+	t.Log(responseEmployee)
+	t.Log("Finished Test")
+
 }
 
 func TestDeleteEmployee(t *testing.T) {
+
+	t.Log("Starting Test")
+
 	router := setupRouter()
 
 	// Add an employee to the store for testing
@@ -137,9 +162,13 @@ func TestDeleteEmployee(t *testing.T) {
 	models.Mutex.Unlock()
 
 	assert.False(t, exists)
+	t.Log("Finished Test")
+
 }
 
 func TestGetAllEmployees(t *testing.T) {
+	t.Log("Starting Test")
+
 	router := setupRouter()
 
 	// Add some employees to the store for testing
@@ -158,4 +187,8 @@ func TestGetAllEmployees(t *testing.T) {
 	json.Unmarshal(w.Body.Bytes(), &employees)
 
 	assert.Len(t, employees, 2)
+
+	t.Log(employees)
+	t.Log("Finished Test")
+
 }

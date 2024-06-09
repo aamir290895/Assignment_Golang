@@ -130,4 +130,34 @@ Concurrency Safety
 The application ensures concurrency safety by using a mutex lock (sync.Mutex) around read and write operations on the in-memory employee store.
 
 
+Test cases :
+
+
+Explanation of Test Cases
+* TestCreateEmployee: Tests the creation of an employee. It sends a POST request to create an employee and checks if the response status is 201 Created and if the employee details match.
+
+* TestGetEmployeeByID: Tests retrieving an employee by ID. It adds an employee to the in-memory store, sends a GET request to retrieve the employee, and checks if the response matches the stored employee.
+
+* TestUpdateEmployee: Tests updating an employee's details. It adds an employee to the store, sends a PUT request to update the employee, and checks if the updated details match the response.
+
+* TestDeleteEmployee: Tests deleting an employee by ID. It adds an employee to the store, sends a DELETE request, and checks if the employee is removed from the store.
+
+* TestGetAllEmployees: Tests retrieving all employees. It adds multiple employees to the store, sends a GET request to retrieve all employees, and checks if the response contains all the stored employees.
+
+
+By following these steps and commands, you can thoroughly test the functionalities of your Go application and ensure that all CRUD operations work correctly.
+
+
+Commands :
+
+1. go test  // for running all the test cases.
+
+2. go test -run [name_of_unit_test_case]  // run unit test case only
+
+3. go test -run [name_of_unit_test_case] -v // to get vebrose output for unit test case.
+
+
+
+
+
 
