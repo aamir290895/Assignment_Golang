@@ -1,7 +1,7 @@
 package handlers
 
 import (
-	"Assignment_Golang/models"
+	"assignment_golang/models"
 	"net/http"
 	"strconv"
 

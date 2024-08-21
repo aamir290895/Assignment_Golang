@@ -1,8 +1,8 @@
 package main
 
 import (
-	"Assignment_Golang/handlers"
-	"Assignment_Golang/models"
+	"assignment_golang/handlers"
+	"assignment_golang/models"
 	"bytes"
 	"encoding/json"
 	"net/http"
